@@ -68,3 +68,25 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Docker
+cd to the frontend folder
+
+## Available Scripts
+
+### `docker run -p 8080:3000 -d greenhouse`
+to run the app
+Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
+
+### `docker stop ccfac1f88d1b` or `docker stop greenhouse`
+to stop the docker container from running use
+
+### `docker kill <container_id_or_name>`
+to force stop the container from running
+
+### `docker rm <container_id_or_name>`
+to remove the container
+
+## Build by 
+docker build -t greenhouse .
+
