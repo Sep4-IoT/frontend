@@ -12,7 +12,7 @@ function GreenHouseDetails() {
           throw new Error('Failed to fetch greenhouse data');
         }
         const data = await response.json();
-        console.log('Response data:', data); // Log the received data
+        console.log('Response data:', data);
         if (!data || data.length === 0) {
           throw new Error('No greenhouse data found');
         }
@@ -26,7 +26,6 @@ function GreenHouseDetails() {
     fetchGreenhouseData();
   }, []);
   
-
   const updateGreenhouseWindow = async () => {
     if (!greenhouse) return; // Ensure greenhouse data is loaded
   
@@ -36,26 +35,25 @@ function GreenHouseDetails() {
   
       // Send PATCH request to update the window status
       const response = await axios.patch(`http://localhost:5047/GreenHouse/${greenhouse.greenHouseId}`, {
-        isWindowOpen: newWindowStatus // Use 'isWindowOpen' instead of 'IsWindowOpen'
+        isWindowOpen: newWindowStatus // Update the window status
       });
   
       // Check if the response contains a message property
       if (response.data && response.data.message) {
         console.log(response.data.message); // Log the response message
       } else {
-        console.log('Window status updated successfully'); // Default message if 'message' property is undefined
+        console.log('Window status updated successfully'); 
       }
   
       // Update local state with the updated window status
       setGreenhouse(prevState => ({
         ...prevState,
-        isWindowOpen: newWindowStatus // Update 'isWindowOpen' in the local state
+        isWindowOpen: newWindowStatus 
       }));
     } catch (error) {
       console.error('Error updating greenhouse window status:', error);
     }
   };
-  
   
   return (
     <div className='container'>
@@ -68,7 +66,10 @@ function GreenHouseDetails() {
           </button>
         </div>
       ) : (
-        <p>Loading greenhouse details...</p>
+        <div>
+          <h1>Welcome to the website our semester project</h1>
+          <p>Loading greenhouse details...</p>
+        </div>
       )}
     </div>
   );
