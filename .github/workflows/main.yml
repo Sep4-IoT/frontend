@@ -1,39 +1,24 @@
-name: CI/CD Pipeline
+stages:
+  - build
+  - test
+  - deploy
 
-on: [push]
+build_job:
+  stage: build
+  script:
+    - echo "Building the app..."
+  artifacts:
+    paths:
+      - build/
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Build the app
-        run: echo "Building the app..." # Replace with actual build commands
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: build-artifact
-          path:./build/
+test_job:
+  stage: test
+  script:
+    - echo "Testing the app..."
+  dependencies:
+    - build_job
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: build-artifact
-      - name: Test the app
-        run: echo "Testing the app..." # Replace with actual test commands
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Deploy the app
-        run: echo "Deploying the app..." # Replace with actual deploy commands
+deploy_job:
+  stage: deploy
+  script:
+    - echo "Deploying the app..."
