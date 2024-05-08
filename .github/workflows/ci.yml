@@ -6,8 +6,8 @@ on:
       - "main"
 
 env:
-  TEST_TAG: user/app:test
-  LATEST_TAG: user/app:latest
+  TEST_TAG: kubista9
+  LATEST_TAG: kubista9/greenhouse
 
 jobs:
   docker:
