@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; 
+import axios from 'axios'; //promise based HTTP client
 
 function GreenHouseDetails() {
   const [greenhouse, setGreenhouse] = useState(null);

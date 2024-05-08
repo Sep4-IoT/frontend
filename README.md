@@ -25,8 +25,16 @@ cd to the frontend folder
 ## Available Scripts
 
 ### `docker run -p 8080:3000 -d greenhouse`
-to run the app
+to run the app in a new container
 Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
+
+### `docker start`
+to run the app in a already made container
+Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
+
+### `docker images`
+
+to see all images
 
 ### `docker stop ccfac1f88d1b` or `docker stop greenhouse`
 to stop the docker container from running use
@@ -38,7 +46,18 @@ to force stop the container from running
 to remove the container
 
 ## Build by 
-docker build -t greenhouse .
+
+### `docker build -t greenhouse .`
+
+## Docker compose
+
+### `docker-compose up`
+
+to run docker compose
+
+### `docker-compose down`
+
+stops and deletes the container but images and volume still remain
 
 # Deployment to Github Pages
 

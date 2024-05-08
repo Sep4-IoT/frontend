@@ -1,5 +1,3 @@
-# Use an official Node runtime as the base image
-# Alpine - a specific version of the Node.js Docker image based on Alpine linux distribution -> security oriented distribution
 FROM node:alpine
 
 # Set the working directory in the container
