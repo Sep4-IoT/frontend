@@ -33,19 +33,16 @@ function GreenHouseDetails() {
       // Toggle window status
       const newWindowStatus = !greenhouse.isWindowOpen;
   
-      // Send PATCH request to update the window status
       const response = await axios.patch(`http://localhost:5047/GreenHouse/${greenhouse.greenHouseId}`, {
         isWindowOpen: newWindowStatus 
       });
   
       // Check if the response contains a message property
       if (response.data && response.data.message) {
-        console.log(response.data.message); // Log the response message
-      } else {
+        console.log(response.data.message);
         console.log('Window status updated successfully'); 
       }
   
-      // Update local state with the updated window status
       setGreenhouse(prevState => ({
         ...prevState,
         isWindowOpen: newWindowStatus 
