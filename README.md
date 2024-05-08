@@ -19,30 +19,6 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
 # Docker
 cd to the frontend folder
 
@@ -64,3 +40,31 @@ to remove the container
 ## Build by 
 docker build -t greenhouse .
 
+# Deployment to Github Pages
+
+make sure you are on gh-pages branch
+
+## Available Scripts
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run deploy` 
+
+This command uses the gh-pages npm package to publish your build directory to the gh-pages branch of your repository. 
+Make sure to bring changes to Main before running this command because it changes the structure. 
+
+### `npm cache clean --force` 
+
+In some cases, clearing the npm cache can resolve issues related to package installations.
+
+### `rm -rf node_modules package-lock.json` then `npm install`
+
+If you have serious issues, try deleting the node_modules directory and the package-lock.json file, then reinstalling the dependencies:
