@@ -1,0 +1,24 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - echo "Building the app..."
+  artifacts:
+    paths:
+      - build/
+
+test_job:
+  stage: test
+  script:
+    - echo "Testing the app..."
+  dependencies:
+    - build_job
+
+deploy_job:
+  stage: deploy
+  script:
+    - echo "Deploying the app..."
