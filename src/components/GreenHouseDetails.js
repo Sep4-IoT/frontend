@@ -12,11 +12,7 @@ function GreenHouseDetails() {
           throw new Error('Failed to fetch greenhouse data');
         }
         const data = await response.json();
-<<<<<<< HEAD
         console.log('Response data:', data);
-=======
-        console.log('Response data:', data); // Log the received data
->>>>>>> parent of 440a683 (Updates)
         if (!data || data.length === 0) {
           throw new Error('No greenhouse data found');
         }
@@ -30,10 +26,6 @@ function GreenHouseDetails() {
     fetchGreenhouseData();
   }, []);
   
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 440a683 (Updates)
   const updateGreenhouseWindow = async () => {
     if (!greenhouse) return; // Ensure greenhouse data is loaded
   
@@ -43,42 +35,26 @@ function GreenHouseDetails() {
   
       // Send PATCH request to update the window status
       const response = await axios.patch(`http://localhost:5047/GreenHouse/${greenhouse.greenHouseId}`, {
-<<<<<<< HEAD
-        isWindowOpen: newWindowStatus // Update the window status
-=======
-        isWindowOpen: newWindowStatus // Use 'isWindowOpen' instead of 'IsWindowOpen'
->>>>>>> parent of 440a683 (Updates)
+        isWindowOpen: newWindowStatus 
       });
   
       // Check if the response contains a message property
       if (response.data && response.data.message) {
         console.log(response.data.message); // Log the response message
       } else {
-<<<<<<< HEAD
         console.log('Window status updated successfully'); 
-=======
-        console.log('Window status updated successfully'); // Default message if 'message' property is undefined
->>>>>>> parent of 440a683 (Updates)
       }
   
       // Update local state with the updated window status
       setGreenhouse(prevState => ({
         ...prevState,
-<<<<<<< HEAD
         isWindowOpen: newWindowStatus 
-=======
-        isWindowOpen: newWindowStatus // Update 'isWindowOpen' in the local state
->>>>>>> parent of 440a683 (Updates)
       }));
     } catch (error) {
       console.error('Error updating greenhouse window status:', error);
     }
   };
   
-<<<<<<< HEAD
-=======
-  
->>>>>>> parent of 440a683 (Updates)
   return (
     <div className='container'>
       {greenhouse ? (
@@ -90,14 +66,10 @@ function GreenHouseDetails() {
           </button>
         </div>
       ) : (
-<<<<<<< HEAD
         <div>
-          <h1>Welcome to the website our semester project</h1>
+          <h1>Welcom to the page</h1>
           <p>Loading greenhouse details...</p>
         </div>
-=======
-        <p>Loading greenhouse details...</p>
->>>>>>> parent of 440a683 (Updates)
       )}
     </div>
   );
