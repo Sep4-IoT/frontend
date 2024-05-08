@@ -28,3 +28,23 @@ code {
   box-shadow:  15px 15px 30px #aad08b,
              -15px -15px 30px #e6ffbb;
 }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader p{
+  margin: 0 20px;
+}
+
+body{
+  background: #141414;
+  overflow:hidden;
+}
+canvas{
+	position:absolute;
+	top:0;
+	left:0;
+}
