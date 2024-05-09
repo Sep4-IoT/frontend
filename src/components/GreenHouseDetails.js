@@ -86,7 +86,7 @@ function GreenHouseDetails() {
               wrapperStyle={{}}
               wrapperClass="dna-wrapper"
             />
-          <p>Loading greenhouse details....</p>
+          <p>Loading greenhouse details.............</p>
           <DNA
               visible={true}
               height="80"
