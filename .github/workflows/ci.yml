@@ -27,8 +27,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{'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'}}
-      
+          password: ${{ secrets.TOKEN_GITHUB }}
 
       - name: Build and export to Docker
         uses: docker/build-push-action@v5
