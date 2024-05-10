@@ -9,7 +9,7 @@ function GreenHouseDetails() {
     const fetchGreenhouseData = async () => {
       try {
         const response = await axios.get('http://localhost:5047/GreenHouse?greenHouseId=2');
-        console.log("API Response:", response.data); // Debugging line
+        console.log("API Response:", response.data); 
         if (response.status !== 200) {
           throw new Error('Failed to fetch greenhouse data');
         }
