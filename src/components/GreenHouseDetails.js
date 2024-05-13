@@ -8,7 +8,7 @@ function GreenHouseDetails() {
   useEffect(() => {
     const fetchGreenhouseData = async () => {
       try {
-        const response = await axios.get('http://localhost:5047/GreenHouse?greenHouseId=2');
+        const response = await axios.get('http://154.62.108.77:5047/GreenHouse/2');
         console.log("API Response:", response.data); // Debugging line
         if (response.status !== 200) {
           throw new Error('Failed to fetch greenhouse data');
@@ -41,7 +41,7 @@ function GreenHouseDetails() {
 
     try {
       const newWindowStatus = !greenhouse.isWindowOpen;
-      const response = await axios.patch(`http://localhost:5047/GreenHouse/${greenhouse.greenHouseId}`, {
+      const response = await axios.patch(`http://154.62.108.77:5047/GreenHouse/2`, {
         isWindowOpen: newWindowStatus 
       });
   
