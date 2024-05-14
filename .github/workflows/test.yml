@@ -1,4 +1,4 @@
-name: test
+name: test and build project with GitHub Actions
 
 on:
   push:

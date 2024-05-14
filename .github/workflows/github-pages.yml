@@ -1,9 +1,9 @@
-name: Build and Deploy
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # This ensures the workflow only runs on pushes to the main branch
+      - main  
 
 permissions:
   contents: write
@@ -24,5 +24,5 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # Specifies the branch to which the build folder will be deployed
-          folder: build  # The folder the action should deploy
+          branch: gh-pages  
+          folder: build  
