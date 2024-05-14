@@ -5,13 +5,9 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-shorthand-properties": "^7.24.1",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
-    "eslint": "^8.57.0",
     "gh-pages": "^6.1.1",
-    "jest": "^27.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-loader-spinner": "^6.1.6",
@@ -23,14 +19,26 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
+<<<<<<< HEAD
     "test": "jest",
+=======
+    "test": "jest --coverage",
+>>>>>>> main
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "./src/setupTests.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/serviceWorker.js"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["html", "text"]
   },
   "browserslist": {
     "production": [
@@ -42,9 +50,32 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+<<<<<<< HEAD
     ],
     "jest": {
       "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"]
     }    
   }
+=======
+    ]
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using npx create-react-app.",
+  "main": "babel.config.js",
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/react": "^15.0.7",
+    "axios-mock-adapter": "^1.22.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3",
+    "react-test-renderer": "^18.3.1",
+    "supertest": "^7.0.0",
+    "whatwg-fetch": "^3.6.20"
+  },
+  "author": "",
+  "license": "ISC"
+>>>>>>> main
 }

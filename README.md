@@ -1,6 +1,6 @@
-# Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using npx create-react-app.
+
+# React
 
 ## Available Scripts
 
@@ -18,6 +18,10 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm test --coverage`
+
+To generate the coverage report
 
 # Docker
 cd to the frontend folder
@@ -49,7 +53,7 @@ to remove the container
 
 ### `docker build -t greenhouse .`
 
-## Docker compose
+# Docker compose
 
 ### `docker-compose up`
 

@@ -1,5 +1,6 @@
+// GreenHouseDetails.js
 import React, { useState, useEffect } from 'react';
-import { DNA } from 'react-loader-spinner'
+import { DNA } from 'react-loader-spinner';
 import axios from 'axios';
 
 function GreenHouseDetails() {
@@ -8,31 +9,31 @@ function GreenHouseDetails() {
   useEffect(() => {
     const fetchGreenhouseData = async () => {
       try {
-        const response = await axios.get('http://localhost:5047/GreenHouse?greenHouseId=2');
-        console.log("API Response:", response.data); 
+        const response = await fetch('https://raw.githubusercontent.com/kubista9/greenhouse/main/greenhouse.json');
+        const data = await response.json();
+        console.log("API Response:", data); // Debugging line
         if (response.status !== 200) {
           throw new Error('Failed to fetch greenhouse data');
         }
-        const data = response.data;
         if (!data || data.length === 0) {
           throw new Error('No greenhouse data found');
         }
-        const greenhouseData = data[0];
+        const greenhouseData = data;
         setGreenhouse({
-          greenHouseId: greenhouseData.greenHouseId,
-          GreenHouseName: greenhouseData.greenHouseName,
-          Description: greenhouseData.description,
-          Temperature: greenhouseData.temperature,
-          LightIntensity: greenhouseData.lightIntensity,
-          Co2Levels: greenhouseData.co2Levels,
-          Humidity: greenhouseData.humidity,
-          isWindowOpen: greenhouseData.isWindowOpen
+          greenHouseId: greenhouseData.GreenHouseId,
+          GreenHouseName: greenhouseData.GreenHouseName,
+          Description: greenhouseData.Description,
+          Temperature: greenhouseData.Temperature,
+          LightIntensity: greenhouseData.LightIntensity,
+          Co2Levels: greenhouseData.Co2Levels,
+          Humidity: greenhouseData.Humidity,
+          isWindowOpen: greenhouseData.IsWindowOpen
         });
       } catch (error) {
         console.error('Error fetching greenhouse data:', error);
       }
     };
-  
+
     fetchGreenhouseData();
   }, []);
 
@@ -56,7 +57,7 @@ function GreenHouseDetails() {
         isWindowOpen: newWindowStatus
       }));
     } catch (error) {
-      console.error('Error updating greenhouse window status:', error);
+      console.error('Error updating greenhouse window status with patch:', error);
     }
   };
   
@@ -78,23 +79,23 @@ function GreenHouseDetails() {
         </div>
       ) : (
         <div className='loader'>
-            <DNA
-              visible={true}
-              height="80"
-              width="80"
-              ariaLabel="dna-loading"
-              wrapperStyle={{}}
-              wrapperClass="dna-wrapper"
-            />
-          <p>Loading greenhouse details.............</p>
           <DNA
-              visible={true}
-              height="80"
-              width="80"
-              ariaLabel="dna-loading"
-              wrapperStyle={{}}
-              wrapperClass="dna-wrapper"
-            />
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+          <p>Loading greenhouse details...</p>
+          <DNA
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
         </div>
       )}
     </div>
