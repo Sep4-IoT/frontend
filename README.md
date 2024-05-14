@@ -1,8 +1,6 @@
-# Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using npx create-react-app.
 
-## Available Scripts
+## React
 
 In the project directory, you can run:
 
@@ -49,7 +47,7 @@ to remove the container
 
 ### `docker build -t greenhouse .`
 
-## Docker compose
+# Docker compose
 
 ### `docker-compose up`
 
