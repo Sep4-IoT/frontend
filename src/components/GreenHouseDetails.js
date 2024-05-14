@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { DNA } from 'react-loader-spinner';
+import axios from 'axios';
 
 function GreenHouseDetails() {
   const [greenhouse, setGreenhouse] = useState(null);
@@ -40,8 +41,16 @@ function GreenHouseDetails() {
 
     try {
       const newWindowStatus = !greenhouse.isWindowOpen;
-      console.log('Window status updated successfully');
-
+      const response = await axios.patch(`http://localhost:5047/GreenHouse/${greenhouse.greenHouseId}`, {
+        isWindowOpen: newWindowStatus 
+      });
+  
+      if (response.data && response.data.message) {
+        console.log(response.data.message);
+      } else {
+        console.log('Window status updated successfully');
+      }
+  
       setGreenhouse(prevState => ({
         ...prevState,
         isWindowOpen: newWindowStatus
@@ -50,7 +59,6 @@ function GreenHouseDetails() {
       console.error('Error updating greenhouse window status:', error);
     }
   };
-
   return (
     <div className='container'>
       {greenhouse ? (
@@ -77,7 +85,7 @@ function GreenHouseDetails() {
             wrapperStyle={{}}
             wrapperClass="dna-wrapper"
           />
-          <p>Loading greenhouse details.............</p>
+          <p>Loading greenhouse details...</p>
           <DNA
             visible={true}
             height="80"
