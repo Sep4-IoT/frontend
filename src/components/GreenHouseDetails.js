@@ -1,3 +1,4 @@
+// GreenHouseDetails.js
 import React, { useState, useEffect } from 'react';
 import { DNA } from 'react-loader-spinner';
 import axios from 'axios';
@@ -56,9 +57,10 @@ function GreenHouseDetails() {
         isWindowOpen: newWindowStatus
       }));
     } catch (error) {
-      console.error('Error updating greenhouse window status:', error);
+      console.error('Error updating greenhouse window status with patch:', error);
     }
   };
+  
   return (
     <div className='container'>
       {greenhouse ? (
