@@ -9,7 +9,7 @@ function GreenHouseDetails() {
   useEffect(() => {
     const fetchGreenhouseData = async () => {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/kubista9/greenhouse/main/greenhouse.json');
+        const response = await fetch('https://javierperalta.dk/GreenHouse/1');
         const data = await response.json();
         console.log("API Response:", data); // Debugging line
         if (response.status !== 200) {
@@ -42,7 +42,7 @@ function GreenHouseDetails() {
 
     try {
       const newWindowStatus = !greenhouse.isWindowOpen;
-      const response = await axios.patch(`http://localhost:5047/GreenHouse/${greenhouse.greenHouseId}`, {
+      const response = await axios.patch(`https://javierperalta.dk/GreenHouse/1`, {
         isWindowOpen: newWindowStatus 
       });
   
