@@ -1,8 +1,4 @@
-<<<<<<< HEAD:.github/workflows/test-build.yml
-name: Test and Build project with GitHub Actions - CI
-=======
 name: test and build project with GitHub Actions
->>>>>>> main:.github/workflows/test.yml
 
 on:
   push:
