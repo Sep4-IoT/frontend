@@ -1,4 +1,4 @@
-name: Build and Deploy to GitHub Pages CD
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - name: Install and Build 🔧
+      - name: Install and Build 🔧  # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           npm ci
           npm run build
