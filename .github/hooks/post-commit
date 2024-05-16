@@ -1,3 +1,0 @@
-#!/bin/sh
-# Push all branches to the personal repository
-git push --mirror personal-repo
