@@ -1,4 +1,4 @@
-name: test and build project with GitHub Actions
+name: Test and Build project with GitHub Actions - CI
 
 on:
   push:
