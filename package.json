@@ -57,6 +57,9 @@
       "last 1 safari version"
     ]
   },
+  "resolutions": {
+    "fsevents": "platform-darwin"
+  },  
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using npx create-react-app.",
   "main": "babel.config.js",
   "devDependencies": {
