@@ -6,7 +6,7 @@ const Home = () => {
       <div className='home-container'>
         <h1>Welcome to home page!</h1>
         <p>
-          This is a simple greenhouse monitoring system.
+          This is a simple IoT greenhouse monitoring system.
         </p>
         </div>
     </div>
