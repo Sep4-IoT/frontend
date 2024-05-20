@@ -1,5 +1,5 @@
 import React from 'react';
-import GreenHouseDetails from './GreenHouseDetails';
+import GreenhouseDetails from '../components/GreenhouseDetails';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import fetchMock from 'jest-fetch-mock';
 

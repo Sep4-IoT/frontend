@@ -1,4 +1,4 @@
-name: test and build project with GitHub Actions
+name: Test and Build project with GitHub Actions - CI
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ node ]
+        node-version: [ 16.x ]
 
     steps:
     - name: Checkout repository
