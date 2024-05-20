@@ -22,10 +22,7 @@ jobs:
           node-version: '14'
 
       - name: Install Dependencies
-        run: |
-          rm -rf node_modules
-          rm package-lock.json
-          npm install
+        run: npm install
 
       - name: Install and Build 🔧
         run: |
