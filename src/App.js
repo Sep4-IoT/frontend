@@ -1,13 +1,23 @@
 //App.js
-import React from 'react';
-import GreenHouseDetails from './components/GreenHouseDetails.js';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Greenhouse from './routes/GreenhousePage';
+import History from './routes/HistoryPage';
+import Navbar from './components/Navbar';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <GreenHouseDetails />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/greenhouse" element={<Greenhouse />} />
+        <Route path="/history" element={<History />} />
+      </Routes>
+    </Router>
   );
-}
+};
+
 
 export default App;
+
