@@ -20,14 +20,14 @@ function GreenHouseDetails() {
         }
         const greenhouseData = data;
         setGreenhouse({
-          greenHouseId: greenhouseData.GreenHouseId,
+          greenHouseId: greenhouseData.id,
           GreenHouseName: greenhouseData.GreenHouseName,
-          Description: greenhouseData.Description,
-          Temperature: greenhouseData.Temperature,
-          LightIntensity: greenhouseData.LightIntensity,
-          Co2Levels: greenhouseData.Co2Levels,
-          Humidity: greenhouseData.Humidity,
-          isWindowOpen: greenhouseData.IsWindowOpen
+          Description: greenhouseData.description,
+          Temperature: greenhouseData.temperature,
+          LightIntensity: greenhouseData.lightIntensity,
+          Co2Levels: greenhouseData.co2Levels,
+          Humidity: greenhouseData.humidity,
+          isWindowOpen: greenhouseData.isWindowOpen
         });
       } catch (error) {
         console.error('Error fetching greenhouse data:', error);
