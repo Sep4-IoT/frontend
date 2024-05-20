@@ -13,21 +13,16 @@ code {
     monospace;
 }
 
-.container {
+/* Greenhouse.css */
+
+.greenhouse-container {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: #c8f5a3;
 }
 
 .wrapper {
-  padding: 35px;
-  border-radius: 50px;
-  background: #c8f5a3;
-  box-shadow:  15px 15px 30px #aad08b,
-             -15px -15px 30px #e6ffbb;
 }
 
 .loader {
@@ -41,11 +36,47 @@ code {
 }
 
 body{
-  background: #141414;
+  background: #ffffff;
   overflow:hidden;
 }
-canvas{
-	position:absolute;
-	top:0;
-	left:0;
+
+/* Navbar.css */
+nav {
+  border-radius: 50px;
+background: linear-gradient(145deg, #cacaca, #f0f0f0);
+box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+
+  margin: 15px;
+  padding: 15px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  border-radius: 5px;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow:  20px 20px 60px #969696,
+               -20px -20px 60px #ffffff;
+}
+
+/* Home.css */
+.home-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.home-container p {
+  max-width: 50ch; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
