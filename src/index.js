@@ -2,7 +2,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import Root from "./routes/Root"
-import HomePage from "./routes/HomePage"
+import HomePage from "./routes/Homepage"
 import GreenhousePage from "./routes/GreenhousePage"
 import HistoryPage from "./routes/HistoryPage"
 import { RouterProvider, createHashRouter } from "react-router-dom"

@@ -1,9 +1,10 @@
-// GreenhouseDetails.js
 import React, { useState, useEffect } from 'react';
-import { DNA } from 'react-loader-spinner';
 import axios from 'axios';
+import Button from './Button';
+import LoadingSpinner from './LoadingSpinner';
+import GreenhouseProperty from './GreenhouseProperty';
 
-function GreenHouseDetails() {
+function GreenhouseDetails() {
   const [greenhouse, setGreenhouse] = useState(null);
 
   useEffect(() => {
@@ -11,23 +12,21 @@ function GreenHouseDetails() {
       try {
         const response = await fetch('https://javierperalta.dk/GreenHouse/1');
         const data = await response.json();
-        console.log("API Response:", data); // Debugging line
         if (response.status !== 200) {
           throw new Error('Failed to fetch greenhouse data');
         }
         if (!data || data.length === 0) {
           throw new Error('No greenhouse data found');
         }
-        const greenhouseData = data;
         setGreenhouse({
-          greenHouseId: greenhouseData.GreenHouseId,
-          GreenHouseName: greenhouseData.GreenHouseName,
-          Description: greenhouseData.Description,
-          Temperature: greenhouseData.Temperature,
-          LightIntensity: greenhouseData.LightIntensity,
-          Co2Levels: greenhouseData.Co2Levels,
-          Humidity: greenhouseData.Humidity,
-          isWindowOpen: greenhouseData.IsWindowOpen
+          id: data.id,
+          greenHouseName: data.greenHouseName,
+          description: data.description,
+          temperature: data.temperature,
+          lightIntensity: data.lightIntensity,
+          co2Levels: data.co2Levels,
+          humidity: data.humidity,
+          isWindowOpen: data.isWindowOpen
         });
       } catch (error) {
         console.error('Error fetching greenhouse data:', error);
@@ -45,13 +44,13 @@ function GreenHouseDetails() {
       const response = await axios.patch(`https://javierperalta.dk/GreenHouse/1`, {
         isWindowOpen: newWindowStatus 
       });
-  
+
       if (response.data && response.data.message) {
         console.log(response.data.message);
       } else {
         console.log('Window status updated successfully');
       }
-  
+
       setGreenhouse(prevState => ({
         ...prevState,
         isWindowOpen: newWindowStatus
@@ -60,47 +59,50 @@ function GreenHouseDetails() {
       console.error('Error updating greenhouse window status with patch:', error);
     }
   };
-  
+
+  const propertyLabels = {
+    id: 'Id',
+    greenHouseName: 'Name',
+    description: 'Description',
+    temperature: 'Temperature',
+    lightIntensity: 'Light intensity',
+    co2Levels: 'CO2 levels',
+    humidity: 'Humidity',
+    isWindowOpen: 'Window opened'
+  };
+
+  const units = {
+    temperature: '°C',
+    lightIntensity: ' lx',
+    co2Levels: ' ppm',
+    humidity: '%',
+    isWindowOpen: ''
+  };
+
   return (
     <div className='greenhouse-container'>
       {greenhouse ? (
         <div className='greenhouse-wrapper'>
-          
-          <p><b>Name:</b> {greenhouse.GreenHouseName}</p>
-          <p><b>Description:</b> {greenhouse.Description}</p>
-          <p><b>Light intensity:</b> {greenhouse.LightIntensity}</p>
-          <p><b>Temperature:</b> {greenhouse.Temperature}</p>
-          <p><b>CO2 levels:</b> {greenhouse.Co2Levels}</p>
-          <p><b>Humidity:</b> {greenhouse.Humidity}</p>
-
-          <p><b>Window opened:</b> {greenhouse.isWindowOpen ? 'Yes' : 'No'}</p>
-          <button onClick={updateGreenhouseWindow}>
-            {greenhouse.isWindowOpen ? 'Close Window' : 'Open Window'}
-          </button>
+          <ul>
+            {Object.entries(greenhouse).map(([key, value]) => (
+              <GreenhouseProperty 
+                key={key} 
+                label={propertyLabels[key]} 
+                value={key === 'isWindowOpen' ? (value ? 'Yes' : 'No') : value} 
+                unit={units[key]}
+              />
+            ))}
+          </ul>
+          <Button
+            onClick={updateGreenhouseWindow}
+            label={greenhouse.isWindowOpen ? 'Close Window' : 'Open Window'}
+          />
         </div>
       ) : (
-        <div className='loader'>
-          <DNA
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
-          />
-          <p>Loading greenhouse details...</p>
-          <DNA
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper"
-          />
-        </div>
+        <LoadingSpinner />
       )}
     </div>
   );
 }
 
-export default GreenHouseDetails;
+export default GreenhouseDetails;
