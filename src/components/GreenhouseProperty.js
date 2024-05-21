@@ -1,17 +1,10 @@
-import React from 'react';
-
-const units = {
-  temperature: '°C',
-  lightIntensity: ' lx',
-  co2Levels: ' ppm',
-  humidity: '%',
-  isWindowOpen: ''
-};
+import React from "react";
 
 const GreenhouseProperty = ({ label, value, unit }) => {
   return (
     <li>
-      <b>{label}:</b> {value}{unit}
+      {label}: {value}
+      {unit}
     </li>
   );
 };
