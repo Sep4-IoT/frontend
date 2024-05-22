@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-function ErrorPage() {
+function ErrorPage () {
   return (
     <div className="wrapper">
       <div className="error-container">
@@ -10,7 +10,7 @@ function ErrorPage() {
         <Link to="/">Go back to the homepage</Link>
       </div>
     </div>
-  );
+  )
 }
 
-export default ErrorPage;
+export default ErrorPage

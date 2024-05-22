@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
         <p>This is a simple IoT greenhouse monitoring system.</p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

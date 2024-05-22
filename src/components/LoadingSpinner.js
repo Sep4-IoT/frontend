@@ -1,5 +1,5 @@
-import React from 'react';
-import { DNA } from 'react-loader-spinner';
+import React from 'react'
+import { DNA } from 'react-loader-spinner'
 
 const LoadingSpinner = () => {
   return (
@@ -22,7 +22,7 @@ const LoadingSpinner = () => {
         wrapperClass="dna-wrapper"
       />
     </div>
-  );
-};
+  )
+}
 
-export default LoadingSpinner;
+export default LoadingSpinner
