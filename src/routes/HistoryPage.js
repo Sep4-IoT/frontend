@@ -1,5 +1,6 @@
-import React from 'react'
-export default function HistoryPage () {
+import React from "react";
+
+export default function HistoryPage() {
   return (
     <div className="wrapper">
       <div className="history-container">
@@ -7,5 +8,5 @@ export default function HistoryPage () {
         <p>graph</p>
       </div>
     </div>
-  )
+  );
 }
