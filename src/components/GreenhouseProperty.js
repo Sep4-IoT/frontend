@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const GreenhouseProperty = ({ label, value, unit }) => {
   return (
@@ -6,7 +6,7 @@ const GreenhouseProperty = ({ label, value, unit }) => {
       {label}: {value}
       {unit}
     </li>
-  )
-}
+  );
+};
 
-export default GreenhouseProperty
+export default GreenhouseProperty;
