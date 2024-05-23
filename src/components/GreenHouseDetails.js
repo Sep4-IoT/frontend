@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "./Button";
-import LoadingSpinner from "./LoadingSpinner";
 import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import GreenhouseProperty from "./GreenhouseProperty";
 import propertyLabels from "../data/propertyLabels";
+import LoadingSpinner from "./LoadingSpinner";
 import units from "../data/units";
+import Button from "./Button";
 
-function GreenhouseDetails() {
+const GreenhouseDetails = () => {
   const [greenhouse, setGreenhouse] = useState(null);
   const navigate = useNavigate();
 
@@ -94,6 +94,6 @@ function GreenhouseDetails() {
       )}
     </div>
   );
-}
+};
 
 export default GreenhouseDetails;
