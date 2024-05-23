@@ -28,7 +28,6 @@ function GetHistory() {
       setHistoryData(data);
     } catch (error) {
       console.error("Error fetching history data:", error);
-      navigate("/error");
     }
   };
 
