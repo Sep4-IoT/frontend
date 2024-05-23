@@ -14,7 +14,6 @@ function GetHistory() {
   const [historyData, setHistoryData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [currentChart, setCurrentChart] = useState(0);
-  const navigate = useNavigate();
 
   const fetchHistoryData = async () => {
     try {
@@ -28,7 +27,6 @@ function GetHistory() {
       setHistoryData(data);
     } catch (error) {
       console.error("Error fetching history data:", error);
-      navigate("/error");
     }
   };
 
