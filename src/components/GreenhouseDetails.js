@@ -5,6 +5,9 @@ import LoadingSpinner from "./LoadingSpinner";
 import { useNavigate } from "react-router-dom";
 import GreenhouseProperty from "./GreenhouseProperty";
 import axiosInstance from "../jwt/axiosInstance";
+import propertyLabels from "../data/propertyLabels";
+import units from "../data/units";
+import { generateToken } from "../jwt/jwtUtils";
 
 function GreenhouseDetails() {
   const [greenhouse, setGreenhouse] = useState(null);
@@ -13,11 +16,12 @@ function GreenhouseDetails() {
   useEffect(() => {
     const fetchGreenhouseData = async () => {
       try {
+        console.log(generateToken());
         const response = await axiosInstance.get(
           "https://api.npoint.io/97ae39192bbd08b53d31"
         );
-        data = response.data;
-        console.log(data);
+        console.log(response.data);
+        const data = response.data;
         if (response.status !== 200) {
           throw new Error("Failed to fetch greenhouse data");
         }

@@ -1,17 +1,21 @@
-// axiosInstance.js
-
+// src/jwt/axiosInstance.js
 import axios from "axios";
+import { getToken, generateToken } from "./jwtUtils";
 
+// Create an Axios instance
 const axiosInstance = axios.create({
-  baseURL: "https://api.npoint.io/644e3e9611e9d4c1728d",
+  baseURL: "https://your.api.base.url",
 });
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("jwt"); // Assuming you store the JWT in localStorage
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    let token = getToken();
+
+    if (!token) {
+      token = generateToken();
     }
+
+    config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   (error) => {
