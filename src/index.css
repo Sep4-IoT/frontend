@@ -78,7 +78,7 @@ nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
 }
 
 /*Home.css*/
@@ -88,4 +88,43 @@ nav a:hover {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
+}
+
+/*History.css*/
+
+canvas {
+  width: 100%;
+}
+.history-table {
+  margin-top: 30px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  text-align: center;
+  padding: 4px 15px;
+}
+tr:nth-child(even) {
+  background-color: #ebebeb;
+  border-collapse: collapse;
+}
+
+.history-chart {
+  margin-top: 30px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px 5px;
+}
+
+.pagination button {
+  margin: 0px 5px;
 }
