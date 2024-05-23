@@ -3,15 +3,26 @@ import GreenhouseDetails from "../components/GreenhouseDetails";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import axios from "axios";
 import fetchMock from "jest-fetch-mock";
+import { BrowserRouter } from "react-router-dom";
 
 jest.mock("axios");
 fetchMock.enableMocks();
+
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUseNavigate,
+}));
 
 beforeEach(() => {
   fetchMock.resetMocks();
 });
 
 test("renders greenhouse details after successful fetch", async () => {
+  const navigate = jest.fn();
+  mockUseNavigate.mockReturnValue(navigate);
+
   const mockData = {
     id: "1",
     greenHouseName: "GreenHouse1",
@@ -25,7 +36,11 @@ test("renders greenhouse details after successful fetch", async () => {
 
   fetchMock.mockResponseOnce(JSON.stringify(mockData));
 
-  render(<GreenhouseDetails />);
+  render(
+    <BrowserRouter>
+      <GreenhouseDetails />
+    </BrowserRouter>
+  );
 
   await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
 
@@ -40,6 +55,9 @@ test("renders greenhouse details after successful fetch", async () => {
 });
 
 test("updates greenhouse window status on button click", async () => {
+  const navigate = jest.fn();
+  mockUseNavigate.mockReturnValue(navigate);
+
   const mockData = {
     id: "1",
     greenHouseName: "GreenHouse1",
@@ -53,7 +71,11 @@ test("updates greenhouse window status on button click", async () => {
 
   fetchMock.mockResponseOnce(JSON.stringify(mockData));
 
-  render(<GreenhouseDetails />);
+  render(
+    <BrowserRouter>
+      <GreenhouseDetails />
+    </BrowserRouter>
+  );
 
   await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
 
