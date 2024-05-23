@@ -1,9 +1,9 @@
-import React from 'react'
-import { DNA } from 'react-loader-spinner'
+import React from "react";
+import { DNA } from "react-loader-spinner";
 
 const LoadingSpinner = () => {
   return (
-    <div className='loader'>
+    <div className="loader">
       <DNA
         visible={true}
         height="80"
@@ -22,7 +22,7 @@ const LoadingSpinner = () => {
         wrapperClass="dna-wrapper"
       />
     </div>
-  )
-}
+  );
+};
 
-export default LoadingSpinner
+export default LoadingSpinner;
