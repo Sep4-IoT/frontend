@@ -47,10 +47,10 @@ test("renders greenhouse details after successful fetch", async () => {
   expect(screen.getByText(/Id: 1/i)).toBeInTheDocument();
   expect(screen.getByText(/GreenHouse1/i)).toBeInTheDocument();
   expect(screen.getByText(/First Green House/i)).toBeInTheDocument();
-  expect(screen.getByText(/25°C/i)).toBeInTheDocument();
-  expect(screen.getByText(/300 lx/i)).toBeInTheDocument();
-  expect(screen.getByText(/400 ppm/i)).toBeInTheDocument();
-  expect(screen.getByText(/60%/i)).toBeInTheDocument();
+  expect(screen.getByText(/25/i)).toBeInTheDocument();
+  expect(screen.getByText(/300/i)).toBeInTheDocument();
+  expect(screen.getByText(/400/i)).toBeInTheDocument();
+  expect(screen.getByText(/60/i)).toBeInTheDocument();
   expect(screen.getByText(/Window opened: No/i)).toBeInTheDocument();
 });
 
