@@ -7,7 +7,7 @@ import GreenhouseProperty from "./GreenhouseProperty";
 import axiosInstance from "../jwt/axiosInstance";
 import propertyLabels from "../data/propertyLabels";
 import units from "../data/units";
-import { generateToken } from "../jwt/jwtUtils";
+import apiClient from "../jwt/axiosInstance";
 
 function GreenhouseDetails() {
   const [greenhouse, setGreenhouse] = useState(null);
@@ -16,8 +16,8 @@ function GreenhouseDetails() {
   useEffect(() => {
     const fetchGreenhouseData = async () => {
       try {
-        console.log(generateToken());
-        const response = await axiosInstance.get(
+        console.log(axiosInstance.generateToken);
+        const response = await apiClient.get(
           "https://api.npoint.io/97ae39192bbd08b53d31"
         );
         console.log(response.data);

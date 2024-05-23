@@ -1,20 +1,16 @@
-// src/jwt/axiosInstance.js
 import axios from "axios";
-import { getToken, generateToken } from "./jwtUtils";
 
-// Create an Axios instance
-const axiosInstance = axios.create({
-  baseURL: "https://your.api.base.url",
+const generateSessionToken = () => {
+  return "12345678";
+};
+
+const apiClient = axios.create({
+  baseURL: "https://api.npoint.io/97ae39192bbd08b53d31",
 });
 
-axiosInstance.interceptors.request.use(
+apiClient.interceptors.request.use(
   (config) => {
-    let token = getToken();
-
-    if (!token) {
-      token = generateToken();
-    }
-
+    const token = generateSessionToken();
     config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
@@ -23,4 +19,4 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-export default axiosInstance;
+export default apiClient;
