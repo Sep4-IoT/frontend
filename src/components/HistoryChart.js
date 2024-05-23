@@ -18,6 +18,7 @@ const HistoryChart = ({
             onClick={() => setCurrentChart(index)}
             label={chart.label}
             disabled={currentChart === index}
+            style={{ backgroundColor: charts.color }}
           />
         ))}
       </div>

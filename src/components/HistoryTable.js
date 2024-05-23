@@ -1,6 +1,6 @@
 import React from "react";
 import chartLabels from "../data/chartLabels";
-import chartUnits from "../data/chartUnits";
+import units from "../data/units";
 
 const HistoryTable = ({ currentData }) => {
   return (
@@ -20,10 +20,10 @@ const HistoryTable = ({ currentData }) => {
           {currentData.map((entry) => (
             <tr key={entry.date}>
               <td>{new Date(entry.date).toLocaleString()}</td>
-              <td>{entry.Temperature + " " + chartUnits.Temperature}</td>
-              <td>{entry.LightIntensity + " " + chartUnits.LightIntensity}</td>
-              <td>{entry.Co2Levels + " " + chartUnits.Co2Levels}</td>
-              <td>{entry.Humidity + " " + chartUnits.Humidity}</td>
+              <td>{entry.Temperature + " " + units.Temperature}</td>
+              <td>{entry.LightIntensity + " " + units.LightIntensity}</td>
+              <td>{entry.Co2Levels + " " + units.Co2Levels}</td>
+              <td>{entry.Humidity + " " + units.Humidity}</td>
             </tr>
           ))}
         </tbody>

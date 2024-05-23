@@ -14,7 +14,5 @@ test("renders loading spinner initially", () => {
       <LoadingSpinner />
     </BrowserRouter>
   );
-  expect(
-    screen.getByText(/Loading greenhouse details.../i)
-  ).toBeInTheDocument();
+  expect(screen.getByText(/Loading greenhouse data.../i)).toBeInTheDocument();
 });
