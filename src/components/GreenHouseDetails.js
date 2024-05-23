@@ -4,6 +4,10 @@ import Button from "./Button";
 import LoadingSpinner from "./LoadingSpinner";
 import { useNavigate } from "react-router-dom";
 import GreenhouseProperty from "./GreenhouseProperty";
+import axiosInstance from "../jwt/axiosInstance";
+import propertyLabels from "../data/propertyLabels";
+import units from "../data/units";
+import { generateToken } from "../jwt/jwtUtils";
 
 function GreenhouseDetails() {
   const [greenhouse, setGreenhouse] = useState(null);
@@ -12,9 +16,12 @@ function GreenhouseDetails() {
   useEffect(() => {
     const fetchGreenhouseData = async () => {
       try {
-        const response = await fetch("https://javierperalta.dk/GreenHouse/1");
-        const data = await response.json();
-        console.log(data);
+        console.log(generateToken());
+        const response = await axiosInstance.get(
+          "https://api.npoint.io/97ae39192bbd08b53d31"
+        );
+        console.log(response.data);
+        const data = response.data;
         if (response.status !== 200) {
           throw new Error("Failed to fetch greenhouse data");
         }
@@ -33,7 +40,6 @@ function GreenhouseDetails() {
         });
       } catch (error) {
         console.error("Error fetching greenhouse data:", error);
-        navigate("/error");
       }
     };
 
@@ -46,7 +52,7 @@ function GreenhouseDetails() {
     try {
       const newWindowStatus = !greenhouse.isWindowOpen;
       const response = await axios.patch(
-        "https://javierperalta.dk/GreenHouse/1",
+        "https://api.npoint.io/97ae39192bbd08b53d311",
         {
           isWindowOpen: newWindowStatus,
         }
@@ -64,27 +70,7 @@ function GreenhouseDetails() {
       }));
     } catch (error) {
       console.error("Error updating greenhouse window status:", error);
-      navigate("/error");
     }
-  };
-
-  const propertyLabels = {
-    id: "Id",
-    greenHouseName: "Name",
-    description: "Description",
-    temperature: "Temperature",
-    lightIntensity: "Light intensity",
-    co2Levels: "CO2 levels",
-    humidity: "Humidity",
-    isWindowOpen: "Window opened",
-  };
-
-  const units = {
-    temperature: "°C",
-    lightIntensity: " lx",
-    co2Levels: " ppm",
-    humidity: "%",
-    isWindowOpen: "",
   };
 
   return (
