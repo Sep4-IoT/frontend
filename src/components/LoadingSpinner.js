@@ -12,7 +12,7 @@ const LoadingSpinner = () => {
         wrapperStyle={{}}
         wrapperClass="dna-wrapper"
       />
-      <p>Loading greenhouse details...</p>
+      <p>Loading greenhouse data...</p>
       <DNA
         visible={true}
         height="80"

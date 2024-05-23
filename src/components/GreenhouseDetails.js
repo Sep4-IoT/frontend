@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from "./Button";
-import LoadingSpinner from "./LoadingSpinner";
 import { useNavigate } from "react-router-dom";
-import GreenhouseProperty from "./GreenhouseProperty";
+import React, { useState, useEffect } from "react";
 
-function GreenhouseDetails() {
+import GreenhouseProperty from "./GreenhouseProperty";
+import propertyLabels from "../data/propertyLabels";
+import LoadingSpinner from "./LoadingSpinner";
+import units from "../data/units";
+import Button from "./Button";
+
+const GreenhouseDetails = () => {
   const [greenhouse, setGreenhouse] = useState(null);
   const navigate = useNavigate();
 
@@ -68,25 +71,6 @@ function GreenhouseDetails() {
     }
   };
 
-  const propertyLabels = {
-    id: "Id",
-    greenHouseName: "Name",
-    description: "Description",
-    temperature: "Temperature",
-    lightIntensity: "Light intensity",
-    co2Levels: "CO2 levels",
-    humidity: "Humidity",
-    isWindowOpen: "Window opened",
-  };
-
-  const units = {
-    temperature: "°C",
-    lightIntensity: " lx",
-    co2Levels: " ppm",
-    humidity: "%",
-    isWindowOpen: "",
-  };
-
   return (
     <div className="wrapper">
       {greenhouse ? (
@@ -111,6 +95,6 @@ function GreenhouseDetails() {
       )}
     </div>
   );
-}
+};
 
 export default GreenhouseDetails;

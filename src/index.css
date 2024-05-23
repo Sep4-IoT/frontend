@@ -14,11 +14,13 @@ code {
 }
 
 p,
-h1 {
+h1,
+a,
+td,
+th {
   text-align: center;
 }
 
-/*ul,li.css*/
 ul {
   list-style-type: none;
   margin: 0;
@@ -27,6 +29,25 @@ ul {
 
 ul li {
   padding: 5px 0;
+}
+
+canvas {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  padding: 4px 15px;
+}
+
+tr:nth-child(even) {
+  background-color: #ebebeb;
+  border-collapse: collapse;
 }
 
 /*Button.css*/
@@ -81,6 +102,8 @@ nav a:hover {
   height: 90vh;
 }
 
+/*Greenhouse.css*/
+
 /*Home.css*/
 .home-container p {
   max-width: 50ch;
@@ -92,26 +115,8 @@ nav a:hover {
 
 /*History.css*/
 
-canvas {
-  width: 100%;
-}
 .history-table {
   margin-top: 30px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td,
-th {
-  text-align: center;
-  padding: 4px 15px;
-}
-tr:nth-child(even) {
-  background-color: #ebebeb;
-  border-collapse: collapse;
 }
 
 .history-chart {
