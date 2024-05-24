@@ -18,7 +18,7 @@ function GreenhouseDetails() {
       try {
         console.log(axiosInstance.generateToken);
         const response = await apiClient.get(
-          "https://api.npoint.io/97ae39192bbd08b53d31"
+          "https://javierperalta.dk/GreenHouse/1"
         );
         console.log(response.data);
         const data = response.data;
@@ -52,7 +52,7 @@ function GreenhouseDetails() {
     try {
       const newWindowStatus = !greenhouse.isWindowOpen;
       const response = await axios.patch(
-        "https://api.npoint.io/97ae39192bbd08b53d311",
+        "https://javierperalta.dk/GreenHouse/1",
         {
           isWindowOpen: newWindowStatus,
         }

@@ -1,8 +1,8 @@
+// axiosInstance.js
 import axios from "axios";
+import { generateJwt } from "./jwtUtils";
 
-const generateSessionToken = () => {
-  return "12345678";
-};
+const token = generateJwt({ username: "admin", password: "via" });
 
 const apiClient = axios.create({
   baseURL: "https://api.npoint.io/97ae39192bbd08b53d31",
@@ -10,7 +10,6 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    const token = generateSessionToken();
     config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
