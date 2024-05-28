@@ -12,7 +12,7 @@ const router = createHashRouter([
       element: <Root />,
       children: [
           {
-              path: "/frontend",
+              path: "/home",
               element: <HomePage />,
           },
           {

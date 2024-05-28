@@ -35,6 +35,7 @@ const GreenhouseDetails = () => {
           humidity: data.Humidity,
           isWindowOpen: data.isWindowOpen,
         });
+        
       } catch (error) {
         console.error("Error fetching greenhouse data:", error);
       }

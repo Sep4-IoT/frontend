@@ -1,6 +1,6 @@
 const propertyLabels = {
   id: "Id",
-  greenHouseName: "Name",
+  name: "Name",
   description: "Description",
   temperature: "Temperature",
   lightIntensity: "Light intensity",
