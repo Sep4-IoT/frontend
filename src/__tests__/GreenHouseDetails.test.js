@@ -80,7 +80,7 @@ test("updates greenhouse window status on button click", async () => {
   );
 
   await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
-  
+
   const button = screen.getByText(/Close Window/i);
 
   fireEvent.click(button);
@@ -89,4 +89,3 @@ test("updates greenhouse window status on button click", async () => {
 
   expect(screen.getByText(/Yes/i)).toBeInTheDocument();
 });
-
