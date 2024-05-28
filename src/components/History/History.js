@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "chart.js/auto";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner";
 import chartLabels from "../data/chartLabels";
 import charts from "../data/chartData";
 import Pagination from "./Pagination";

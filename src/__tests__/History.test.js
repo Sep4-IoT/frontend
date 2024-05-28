@@ -1,5 +1,5 @@
 import React from "react";
-import History from "../components/History";
+import History from "../components/History/History";
 import { render, screen, waitFor } from "@testing-library/react";
 import fetchMock from "jest-fetch-mock";
 import { BrowserRouter } from "react-router-dom";

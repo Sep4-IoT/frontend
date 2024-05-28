@@ -2,17 +2,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import GreenhouseProperty from "./GreenhouseProperty";
-<<<<<<< HEAD:src/components/GreenhouseDetails.js
-import propertyLabels from "../data/propertyLabels";
-import LoadingSpinner from "./LoadingSpinner";
-import units from "../data/units";
-import Button from "./Button";
-=======
 import axiosInstance from "../jwt/axiosInstance";
 import propertyLabels from "../data/propertyLabels";
 import units from "../data/units";
 import apiClient from "../jwt/axiosInstance";
->>>>>>> feature/jwt:src/components/Greenhouse/GreenhouseDetails.js
 
 const GreenhouseDetails = () => {
   const [greenhouse, setGreenhouse] = useState(null);
@@ -21,20 +14,12 @@ const GreenhouseDetails = () => {
   useEffect(() => {
     const fetchGreenhouseData = async () => {
       try {
-<<<<<<< HEAD:src/components/GreenhouseDetails.js
-        const response = await fetch(
-          "https://api.npoint.io/97ae39192bbd08b53d31"
-        );
-        const data = await response.json();
-        console.log(data);
-=======
         console.log(axiosInstance.generateToken);
         const response = await apiClient.get(
           "https://javierperalta.dk/GreenHouse/1"
         );
         console.log(response.data);
         const data = response.data;
->>>>>>> feature/jwt:src/components/Greenhouse/GreenhouseDetails.js
         if (response.status !== 200) {
           throw new Error("Failed to fetch greenhouse data");
         }
