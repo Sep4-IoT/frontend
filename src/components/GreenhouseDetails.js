@@ -2,10 +2,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import GreenhouseProperty from "./GreenhouseProperty";
-import axiosInstance from "../jwt/axiosInstance";
 import propertyLabels from "../data/propertyLabels";
 import units from "../data/units";
-import apiClient from "../jwt/axiosInstance";
+import LoadingSpinner from "./LoadingSpinner";
+import Button from "./Button";
 
 const GreenhouseDetails = () => {
   const [greenhouse, setGreenhouse] = useState(null);
@@ -14,9 +14,8 @@ const GreenhouseDetails = () => {
   useEffect(() => {
     const fetchGreenhouseData = async () => {
       try {
-        console.log(axiosInstance.generateToken);
-        const response = await apiClient.get(
-          "https://javierperalta.dk/GreenHouse/1"
+        const response = await axios.get(
+          "https://javierperalta.dk/SEP4/greenhouses/1/current"
         );
         console.log(response.data);
         const data = response.data;
@@ -27,13 +26,13 @@ const GreenhouseDetails = () => {
           throw new Error("No greenhouse data found");
         }
         setGreenhouse({
-          id: data.id,
-          greenHouseName: data.greenHouseName,
-          description: data.description,
-          temperature: data.temperature,
-          lightIntensity: data.lightIntensity,
-          co2Levels: data.co2Levels,
-          humidity: data.humidity,
+          id: data.Id,
+          name: data.Name,
+          description: data.Description,
+          temperature: data.Temperature,
+          lightIntensity: data.LightIntensity,
+          co2Levels: data.Co2Levels,
+          humidity: data.Humidity,
           isWindowOpen: data.isWindowOpen,
         });
       } catch (error) {
@@ -50,7 +49,7 @@ const GreenhouseDetails = () => {
     try {
       const newWindowStatus = !greenhouse.isWindowOpen;
       const response = await axios.patch(
-        "https://api.npoint.io/97ae39192bbd08b53d31",
+        "https://javierperalta.dk/SEP4/greenhouses/1",
         {
           isWindowOpen: newWindowStatus,
         }

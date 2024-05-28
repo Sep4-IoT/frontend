@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "chart.js/auto";
-import LoadingSpinner from "../LoadingSpinner";
+import LoadingSpinner from "./LoadingSpinner";
 import chartLabels from "../data/chartLabels";
 import charts from "../data/chartData";
 import Pagination from "./Pagination";
@@ -18,7 +18,7 @@ function GetHistory() {
   const fetchHistoryData = async () => {
     try {
       const response = await fetch(
-        "https://api.npoint.io/644e3e9611e9d4c1728d"
+        "https://javierperalta.dk/SEP4/greenhouses/1/history"
       );
       if (!response.ok) {
         throw new Error("Network response was not ok");
