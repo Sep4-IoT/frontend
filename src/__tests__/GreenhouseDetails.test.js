@@ -1,55 +1,91 @@
-import React from 'react';
-import GreenhouseDetails from '../components/GreenhouseDetails';
-import { render, screen, waitFor, act } from '@testing-library/react';
-import fetchMock from 'jest-fetch-mock';
+import React from "react";
+import GreenhouseDetails from "../components/GreenhouseDetails";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+import { BrowserRouter } from "react-router-dom";
+
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUseNavigate,
+}));
+
+let mockAxios;
 
 beforeEach(() => {
-  fetchMock.resetMocks();
+  mockAxios = new MockAdapter(axios);
+  mockUseNavigate.mockReset();
 });
 
-test('renders loading spinner initially', () => {
-  render(<GreenhouseDetails />);
-  expect(screen.getByText(/Loading greenhouse details.../i)).toBeInTheDocument();
+test("renders greenhouse details after successful fetch", async () => {
+  const navigate = jest.fn();
+  mockUseNavigate.mockReturnValue(navigate);
+
+  const mockData = {
+    Id: 1,
+    Name: "GreenHouse1",
+    Description: "First Green House",
+    Temperature: 25,
+    LightIntensity: 300,
+    Co2Levels: 400,
+    Humidity: 60,
+    isWindowOpen: false,
+  };
+
+  mockAxios.onGet("https://javierperalta.dk/SEP4/greenhouses/1/current").reply(200, mockData);
+
+  render(
+    <BrowserRouter>
+      <GreenhouseDetails />
+    </BrowserRouter>
+  );
+
+  await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
+
+  expect(screen.getByText(/GreenHouse1/i)).toBeInTheDocument();
+  expect(screen.getByText(/First Green House/i)).toBeInTheDocument();
+  expect(screen.getByText(/25/i)).toBeInTheDocument();
+  expect(screen.getByText(/300/i)).toBeInTheDocument();
+  expect(screen.getByText(/400/i)).toBeInTheDocument();
+  expect(screen.getByText(/60/i)).toBeInTheDocument();
+  expect(screen.getByText(/No/i)).toBeInTheDocument();
 });
 
-test('renders greenhouse details as null after loading', () => {
-  render(<GreenhouseDetails />);
-  expect(screen.queryByText(/ID:/i)).toBeNull();
-  expect(screen.queryByText(/Window opened:/i)).toBeNull();
-  expect(screen.queryByText(/Greenhouse name:/i)).toBeNull();
-  expect(screen.queryByText(/Description:/i)).toBeNull();
-  expect(screen.queryByText(/Temperature:/i)).toBeNull();
-  expect(screen.queryByText(/Light intensity:/i)).toBeNull();
-  expect(screen.queryByText(/CO2 levels:/i)).toBeNull();
-  expect(screen.queryByText(/Humidity:/i)).toBeNull();
+test("updates greenhouse window status on button click", async () => {
+  const navigate = jest.fn();
+  mockUseNavigate.mockReturnValue(navigate);
+
+  const mockData = {
+    Id: 1,
+    Name: "GreenHouse1",
+    Description: "First Green House",
+    Temperature: 25,
+    LightIntensity: 300,
+    Co2Levels: 400,
+    Humidity: 60,
+    isWindowOpen: false,
+  };
+
+  mockAxios.onGet("https://javierperalta.dk/SEP4/greenhouses/1/current").reply(200, mockData);
+  mockAxios.onPatch("https://javierperalta.dk/SEP4/greenhouses/1").reply(200, {
+    message: "Window status updated successfully"
+  });
+
+  render(
+    <BrowserRouter>
+      <GreenhouseDetails />
+    </BrowserRouter>
+  );
+
+  await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
+
+  const button = screen.getByRole('button', { name: /Open Window/i });
+
+  fireEvent.click(button);
+
+  await waitFor(() => expect(screen.getByText(/Close Window/i)).toBeInTheDocument());
+
+  expect(screen.getByText(/Yes/i)).toBeInTheDocument();
 });
-
-// test('renders greenhouse details after successful fetch', async () => {
-//   const mockData = {
-//     greenHouseId: 1,
-//     greenHouseName: 'Test Greenhouse',
-//     description: 'A test greenhouse',
-//     temperature: 25,
-//     lightIntensity: 300,
-//     co2Levels: 400,
-//     humidity: 60,
-//     isWindowOpen: true
-//   };
-
-//   fetchMock.mockResponseOnce(JSON.stringify(mockData));
-
-//   await act(async () => {
-//     render(<GreenhouseDetails />);
-//   });
-
-//   await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
-
-//   expect(screen.getByText(/Id: 1/)).toBeInTheDocument();
-//   expect(screen.getByText(/Window opened: Yes/i)).toBeInTheDocument();
-//   expect(screen.getByText(/Name: Test Greenhouse/i)).toBeInTheDocument();
-//   expect(screen.getByText(/Description: A test greenhouse/i)).toBeInTheDocument();
-//   expect(screen.getByText(/Temperature: 25°C/i)).toBeInTheDocument();
-//   expect(screen.getByText(/Light intensity: 300 lx/i)).toBeInTheDocument();
-//   expect(screen.getByText(/CO2 levels: 400 ppm/i)).toBeInTheDocument();
-//   expect(screen.getByText(/Humidity: 60%/i)).toBeInTheDocument();
-// });

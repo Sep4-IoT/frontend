@@ -46,26 +46,26 @@ const GreenhouseDetails = () => {
 
   const updateGreenhouseWindow = async () => {
     if (!greenhouse) return;
-
+  
     try {
       const newWindowStatus = !greenhouse.isWindowOpen;
+      setGreenhouse((prevState) => ({
+        ...prevState,
+        isWindowOpen: newWindowStatus,
+      }));
+  
       const response = await axios.patch(
         "https://javierperalta.dk/SEP4/greenhouses/1",
         {
           isWindowOpen: newWindowStatus,
         }
       );
-
+  
       if (response.data && response.data.message) {
         console.log(response.data.message);
       } else {
         console.log("Window status updated successfully");
       }
-
-      setGreenhouse((prevState) => ({
-        ...prevState,
-        isWindowOpen: newWindowStatus,
-      }));
     } catch (error) {
       console.error("Error updating greenhouse window status:", error);
     }
