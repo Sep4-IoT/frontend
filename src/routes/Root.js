@@ -6,7 +6,7 @@ export default function App() {
   return (
     <>
       <nav>
-        <Link to="/frontend">Home</Link>
+        <Link to="/home">Home</Link>
         <Link to="/greenhouse">Greenhouse</Link>
         <Link to="/history">History</Link>
       </nav>

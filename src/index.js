@@ -8,22 +8,22 @@ import { RouterProvider, createHashRouter } from "react-router-dom";
 
 const router = createHashRouter([
   {
-    path: "/frontend/",
-    element: <Root />,
-    children: [
-      {
-        path: "frontend", 
-        element: <HomePage />,
-      },
-      {
-        path: "greenhouse",
-        element: <GreenhousePage />,
-      },
-      {
-        path: "history",
-        element: <HistoryPage />,
-      },
-    ],
+      path: "/",
+      element: <Root />,
+      children: [
+          {
+              path: "/home",
+              element: <HomePage />,
+          },
+          {
+              path: "/greenhouse",
+              element: <GreenhousePage />,
+          },
+          {
+              path: "/history",
+              element: <HistoryPage />,
+          },
+      ],
   },
 ]);
 
