@@ -53,39 +53,39 @@ test("renders greenhouse details after successful fetch", async () => {
   expect(screen.getByText(/No/i)).toBeInTheDocument();
 });
 
-// test("updates greenhouse window status on button click", async () => {
-//   const navigate = jest.fn();
-//   mockUseNavigate.mockReturnValue(navigate);
+test("updates greenhouse window status on button click", async () => {
+  const navigate = jest.fn();
+  mockUseNavigate.mockReturnValue(navigate);
 
-//   const mockData = {
-//     Id: 1,
-//     Name: "GreenHouse1",
-//     Description: "First Green House",
-//     Temperature: 25,
-//     LightIntensity: 300,
-//     Co2Levels: 400,
-//     Humidity: 60,
-//     isWindowOpen: false,
-//   };
+  const mockData = {
+    Id: 1,
+    Name: "GreenHouse1",
+    Description: "First Green House",
+    Temperature: 25,
+    LightIntensity: 300,
+    Co2Levels: 400,
+    Humidity: 60,
+    isWindowOpen: false,
+  };
 
-//   mockAxios.onGet("https://javierperalta.dk/SEP4/greenhouses/1/current").reply(200, mockData);
-//   mockAxios.onPatch("https://javierperalta.dk/SEP4/greenhouses/1").reply(200, {
-//     message: "Window status updated successfully"
-//   });
+  mockAxios.onGet("https://javierperalta.dk/SEP4/greenhouses/1/current").reply(200, mockData);
+  mockAxios.onPatch("https://javierperalta.dk/SEP4/greenhouses/1").reply(200, {
+    message: "Window status updated successfully"
+  });
 
-//   render(
-//     <BrowserRouter>
-//       <GreenhouseDetails />
-//     </BrowserRouter>
-//   );
+  render(
+    <BrowserRouter>
+      <GreenhouseDetails />
+    </BrowserRouter>
+  );
 
-//   await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
 
-//   const button = screen.getByText(/Close Window/i);
+  const button = screen.getByRole('button', { name: /Open Window/i });
 
-//   fireEvent.click(button);
+  fireEvent.click(button);
 
-//   await waitFor(() => expect(screen.getByText(/Open Window/i)).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText(/Close Window/i)).toBeInTheDocument());
 
-//   expect(screen.getByText(/Yes/i)).toBeInTheDocument();
-// });
+  expect(screen.getByText(/Yes/i)).toBeInTheDocument();
+});
