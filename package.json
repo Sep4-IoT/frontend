@@ -1,11 +1,8 @@
 {
   "name": "@kubista9/sep4-iot-greenhouse",
-  "homepage": "https://sep4-iot.github.io/home",
+  "homepage": "https://sep4-iot.github.io/frontend",
   "version": "0.1.3",
   "private": false,
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/Sep4-IoT"
-  },
   "dependencies": {
     "@babel/plugin-transform-shorthand-properties": "^7.24.1",
     "@testing-library/user-event": "^13.5.0",
