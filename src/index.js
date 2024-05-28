@@ -1,4 +1,3 @@
-//index.js
 import React from "react"
 import ReactDOM from "react-dom/client"
 import Root from "./routes/Root"
@@ -13,7 +12,7 @@ const router = createHashRouter([
       element: <Root />,
       children: [
           {
-              path: "/",
+              path: "/home",
               element: <HomePage />,
           },
           {
