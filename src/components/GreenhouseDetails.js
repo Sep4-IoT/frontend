@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import GreenhouseProperty from "./GreenhouseProperty";
 import propertyLabels from "../data/propertyLabels";
@@ -9,7 +8,6 @@ import Button from "./Button";
 
 const GreenhouseDetails = () => {
   const [greenhouse, setGreenhouse] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGreenhouseData = async () => {
@@ -42,7 +40,7 @@ const GreenhouseDetails = () => {
     };
 
     fetchGreenhouseData();
-  }, [navigate]);
+  }, []);
 
   const updateGreenhouseWindow = async () => {
     if (!greenhouse) return;

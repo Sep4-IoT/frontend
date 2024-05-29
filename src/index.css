@@ -50,7 +50,17 @@ tr:nth-child(even) {
   border-collapse: collapse;
 }
 
-/*Button.css*/
+/*wrapper.css*/
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  margin-top: 30px;
+}
+/*COMPONENTS*/
+
+/*button.css*/
 .button {
   margin: 10px 0px;
   padding: 3px 15px;
@@ -61,7 +71,7 @@ tr:nth-child(even) {
   background-color: #cdcdcd;
 }
 
-/* Loader.css */
+/* loader.css */
 .loader {
   display: flex;
   justify-content: center;
@@ -72,7 +82,7 @@ tr:nth-child(even) {
   padding: 0 20px;
 }
 
-/* Navbar.css */
+/* navbar.css */
 nav {
   border: 1px solid #f0f0f0;
   border-radius: 5px;
@@ -94,35 +104,7 @@ nav a:hover {
   background-color: #cdcdcd;
 }
 
-/*Wrapper.css*/
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  padding-top: 30px;
-}
-
-/*Greenhouse.css*/
-
-/*Home.css*/
-.home-container p {
-  max-width: 50ch;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: center;
-}
-
-/*History.css*/
-
-.history-table {
-  margin-top: 30px;
-}
-
-.history-chart {
-  margin-top: 30px;
-}
+/*pagination.css*/
 .pagination {
   display: flex;
   justify-content: center;
@@ -133,4 +115,22 @@ nav a:hover {
 
 .pagination button {
   margin: 0px 5px;
+}
+
+/*home.css*/
+.home-container p {
+  max-width: 50ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/*history.css*/
+.history-table {
+  margin-top: 30px;
+}
+
+.history-chart {
+  margin-top: 30px;
 }
