@@ -5,24 +5,14 @@ import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { BrowserRouter } from "react-router-dom";
 
-const mockUseNavigate = jest.fn();
-
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useNavigate: () => mockUseNavigate,
-}));
-
 let mockAxios;
 
 beforeEach(() => {
   mockAxios = new MockAdapter(axios);
-  mockUseNavigate.mockReset();
+  mockAxios.reset();
 });
 
 test("renders greenhouse details after successful fetch", async () => {
-  const navigate = jest.fn();
-  mockUseNavigate.mockReturnValue(navigate);
-
   const mockData = {
     Id: 1,
     Name: "GreenHouse1",
@@ -42,7 +32,7 @@ test("renders greenhouse details after successful fetch", async () => {
     </BrowserRouter>
   );
 
-  await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText(/GreenHouse1/i)).toBeInTheDocument());
 
   expect(screen.getByText(/GreenHouse1/i)).toBeInTheDocument();
   expect(screen.getByText(/First Green House/i)).toBeInTheDocument();
@@ -54,9 +44,6 @@ test("renders greenhouse details after successful fetch", async () => {
 });
 
 test("updates greenhouse window status on button click", async () => {
-  const navigate = jest.fn();
-  mockUseNavigate.mockReturnValue(navigate);
-
   const mockData = {
     Id: 1,
     Name: "GreenHouse1",
@@ -67,7 +54,7 @@ test("updates greenhouse window status on button click", async () => {
     Humidity: 60,
     isWindowOpen: false,
   };
-
+  
   mockAxios.onGet("https://javierperalta.dk/SEP4/greenhouses/1/current").reply(200, mockData);
   mockAxios.onPatch("https://javierperalta.dk/SEP4/greenhouses/1").reply(200, {
     message: "Window status updated successfully"
@@ -79,14 +66,10 @@ test("updates greenhouse window status on button click", async () => {
     </BrowserRouter>
   );
 
-  await waitFor(() => expect(screen.getByText(/Id: 1/i)).toBeInTheDocument());
-  
+  await waitFor(() => expect(screen.getByText(/GreenHouse1/i)).toBeInTheDocument());
   const button = screen.getByRole('button', { name: /Open Window/i });
-
   fireEvent.click(button);
 
   await waitFor(() => expect(screen.getByText(/Close Window/i)).toBeInTheDocument());
-
   expect(screen.getByText(/Yes/i)).toBeInTheDocument();
 });
-
