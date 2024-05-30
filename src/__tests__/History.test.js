@@ -1,15 +1,15 @@
 import React from "react";
 import History from "../components/History";
 import { render, screen, waitFor } from "@testing-library/react";
-import fetchMock from "jest-fetch-mock";
 import { BrowserRouter } from "react-router-dom";
 
-jest.mock("axios");
-fetchMock.enableMocks();
+let mockAxios;
 
 beforeEach(() => {
-  fetchMock.resetMocks();
+  mockAxios = new MockAdapter(axios);
+  mockAxios.reset();
 });
+
 
 test("renders history data after successful fetch", async () => {
   const mockData = [
@@ -22,7 +22,7 @@ test("renders history data after successful fetch", async () => {
     },
   ];
 
-  fetchMock.mockResponseOnce(JSON.stringify(mockData));
+  mockAxios.onGet("https://javierperalta.dk/SEP4/greenhouses/1/history").reply(200, mockData);
 
   render(
     <BrowserRouter>

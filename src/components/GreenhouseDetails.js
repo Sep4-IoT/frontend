@@ -8,6 +8,7 @@ import Button from "./Button";
 
 const GreenhouseDetails = () => {
   const [greenhouse, setGreenhouse] = useState(null);
+  const [intervalId, setIntervalId] = useState(null); // Step 1: State to hold the interval ID
 
   useEffect(() => {
     const fetchGreenhouseData = async () => {
@@ -15,13 +16,9 @@ const GreenhouseDetails = () => {
         const response = await axios.get(
           "https://javierperalta.dk/SEP4/greenhouses/1/current"
         );
-        console.log(response.data);
         const data = response.data;
-        if (response.status !== 200) {
+        if (response.status!== 200 ||!data || data.length === 0) {
           throw new Error("Failed to fetch greenhouse data");
-        }
-        if (!data || data.length === 0) {
-          throw new Error("No greenhouse data found");
         }
         setGreenhouse({
           id: data.Id,
@@ -33,32 +30,35 @@ const GreenhouseDetails = () => {
           humidity: data.Humidity,
           isWindowOpen: data.isWindowOpen,
         });
-        
       } catch (error) {
         console.error("Error fetching greenhouse data:", error);
       }
     };
 
-    fetchGreenhouseData();
+    const id = setInterval(fetchGreenhouseData, 1000); // Step 2: Set up the interval
+    setIntervalId(id); // Store the interval ID
+
+    // Step 3: Clear the interval on component unmount
+    return () => clearInterval(id);
   }, []);
 
   const updateGreenhouseWindow = async () => {
     if (!greenhouse) return;
-  
+
     try {
-      const newWindowStatus = !greenhouse.isWindowOpen;
+      const newWindowStatus =!greenhouse.isWindowOpen;
       setGreenhouse((prevState) => ({
-        ...prevState,
+       ...prevState,
         isWindowOpen: newWindowStatus,
       }));
-  
+
       const response = await axios.patch(
         "https://javierperalta.dk/SEP4/greenhouses/1",
         {
           isWindowOpen: newWindowStatus,
         }
       );
-  
+
       if (response.data && response.data.message) {
         console.log(response.data.message);
       } else {
@@ -71,21 +71,21 @@ const GreenhouseDetails = () => {
 
   return (
     <div className="wrapper">
-      {greenhouse ? (
+      {greenhouse? (
         <div className="greenhouse-container">
           <ul>
             {Object.entries(greenhouse).map(([key, value]) => (
               <GreenhouseProperty
                 key={key}
                 label={propertyLabels[key]}
-                value={key === "isWindowOpen" ? (value ? "Yes" : "No") : value}
+                value={key === "isWindowOpen"? (value? "Yes" : "No") : value}
                 unit={units[key]}
               />
             ))}
           </ul>
           <Button
             onClick={updateGreenhouseWindow}
-            label={greenhouse.isWindowOpen ? "Close Window" : "Open Window"}
+            label={greenhouse.isWindowOpen? "Close Window" : "Open Window"}
           />
         </div>
       ) : (
