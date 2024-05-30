@@ -57,7 +57,7 @@ function History() {
   const totalPages = Math.ceil(historyData.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentData = historyData.slice(startIndex, endIndex);
+  const currentData = historyData.slice().reverse().slice(startIndex, endIndex);
 
   return (
     <div className="wrapper">
