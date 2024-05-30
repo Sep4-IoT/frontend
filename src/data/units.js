@@ -1,8 +1,12 @@
 const units = {
-  Temperature: "°C",
-  LightIntensity: "lux",
-  Co2Levels: "ppm",
-  Humidity: "%",
+  id: "",
+  name: "",
+  description: "",
+  temperature: "°C",
+  lightIntensity: "lux",
+  co2Levels: "ppm",
+  humidity: "%",
+  isWindowOpen: "",
 };
 
 export default units;

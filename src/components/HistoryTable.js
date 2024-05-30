@@ -20,10 +20,10 @@ const HistoryTable = ({ currentData }) => {
           {currentData.map((entry) => (
             <tr key={entry.date}>
               <td>{new Date(entry.date).toLocaleString()}</td>
-              <td>{entry.Temperature + " " + units.Temperature}</td>
-              <td>{entry.LightIntensity + " " + units.LightIntensity}</td>
-              <td>{entry.Co2Levels + " " + units.Co2Levels}</td>
-              <td>{entry.Humidity + " " + units.Humidity}</td>
+              <td>{entry.Temperature + " " + units.temperature}</td>
+              <td>{entry.LightIntensity + " " + units.lightIntensity}</td>
+              <td>{entry.Co2Levels + " " + units.co2Levels}</td>
+              <td>{entry.Humidity + " " + units.humidity}</td>
             </tr>
           ))}
         </tbody>

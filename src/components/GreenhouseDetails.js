@@ -8,7 +8,8 @@ import Button from "./Button";
 
 const GreenhouseDetails = () => {
   const [greenhouse, setGreenhouse] = useState(null);
-  const [intervalId, setIntervalId] = useState(null); // Step 1: State to hold the interval ID
+  //const [intervalId, setIntervalId] = useState(null); 
+  // for automatic refresh every 5 seconds
 
   useEffect(() => {
     const fetchGreenhouseData = async () => {
@@ -16,9 +17,13 @@ const GreenhouseDetails = () => {
         const response = await axios.get(
           "https://javierperalta.dk/SEP4/greenhouses/1/current"
         );
+        console.log(response.data);
         const data = response.data;
-        if (response.status!== 200 ||!data || data.length === 0) {
+        if (response.status !== 200) {
           throw new Error("Failed to fetch greenhouse data");
+        }
+        if (!data || data.length === 0) {
+          throw new Error("No greenhouse data found");
         }
         setGreenhouse({
           id: data.Id,
@@ -30,28 +35,27 @@ const GreenhouseDetails = () => {
           humidity: data.Humidity,
           isWindowOpen: data.isWindowOpen,
         });
+        
       } catch (error) {
         console.error("Error fetching greenhouse data:", error);
       }
     };
 
-    const id = setInterval(fetchGreenhouseData, 1000); // Step 2: Set up the interval
-    setIntervalId(id); // Store the interval ID
+    // for automatic refresh every 5 seconds
+    // const id = setInterval(fetchGreenhouseData, 5000); 
+    // setIntervalId(id);
+    // return () => clearInterval(id);
 
-    // Step 3: Clear the interval on component unmount
-    return () => clearInterval(id);
+    fetchGreenhouseData();
   }, []);
 
   const updateGreenhouseWindow = async () => {
     if (!greenhouse) return;
-
+  
     try {
-      const newWindowStatus =!greenhouse.isWindowOpen;
-      setGreenhouse((prevState) => ({
-       ...prevState,
-        isWindowOpen: newWindowStatus,
-      }));
-
+      const newWindowStatus = !greenhouse.isWindowOpen;
+      
+  
       const response = await axios.patch(
         "https://javierperalta.dk/SEP4/greenhouses/1",
         {
@@ -59,6 +63,11 @@ const GreenhouseDetails = () => {
         }
       );
 
+      setGreenhouse((prevState) => ({
+        ...prevState,
+        isWindowOpen: newWindowStatus,
+      }));
+  
       if (response.data && response.data.message) {
         console.log(response.data.message);
       } else {

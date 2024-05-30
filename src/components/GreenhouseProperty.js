@@ -1,10 +1,9 @@
 import React from "react";
 
-const GreenhouseProperty = ({ label, value, unit }) => {
+const GreenhouseProperty = ({ label, value, unit, emoji }) => {
   return (
     <li>
-      {label}: {value}
-      {unit}
+      <strong>{label} {emoji}:</strong> {value} {unit}
     </li>
   );
 };
