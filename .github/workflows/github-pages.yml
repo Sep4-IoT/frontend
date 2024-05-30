@@ -22,8 +22,10 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Clean Install Dependencies
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: Install and Build 🔧
         run: |
@@ -35,6 +37,7 @@ jobs:
         with:
           branch: gh-pages  
           folder: build  
+
       - name: Verify Deployment
         run: |
           curl -s https://sep4-iot.github.io/frontend > /dev/null && echo "Deployment successful" || echo "Deployment failed"
