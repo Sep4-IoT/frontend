@@ -12,3 +12,4 @@ test("renders loading spinner initially", () => {
   );
   expect(screen.getByText(/Loading greenhouse data.../i)).toBeInTheDocument();
 });
+

@@ -53,16 +53,6 @@ to remove the container
 
 ### `docker build -t greenhouse .`
 
-# Docker compose
-
-### `docker-compose up`
-
-to run docker compose
-
-### `docker-compose down`
-
-stops and deletes the container but images and volume still remain
-
 # Deployment to Github Pages
 
 make sure you are on gh-pages branch
